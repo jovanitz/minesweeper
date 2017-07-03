@@ -7,7 +7,6 @@ import {
   bombsAround,
   createMatrixBoard,
   createBoard,
-  openAround
 } from './minesweeper-data';
 
 export default class Minesweeper extends Component {
@@ -36,60 +35,48 @@ export default class Minesweeper extends Component {
     const matrixMinesWeeper = bombsAround(generateBombs(createMatrixMinesweeper()));
     const matrixBoard = createMatrixBoard(8);
     const minesweeper = createBoard(matrixBoard, matrixMinesWeeper);
-    this.setState({ minesweeper, openBox: [], matrixMinesWeeper, gameOver: false});
+    this.setState({ minesweeper, openBox: [], matrixMinesWeeper, gameOver: false });
   }
 
-  openAround(xi,xj){
-    if(xi == 0 && xj == 0){
+  openAround(xi, xj){
+    if (xi === 0 && xj === 0){
       this.openZeros(xi, xj, xi + 1, xj + 1, xi, xj);
-    }
-    else if(xi == 0 && (xj > 0 && xj < 7)){
+    } else if (xi === 0 && (xj > 0 && xj < 7)){
       this.openZeros(xi, xj - 1, xi + 1, xj + 1, xi, xj);
-    }
-    else if(xi == 0 && xj == 7){
+    } else if (xi === 0 && xj === 7){
       this.openZeros(xi, xj - 1, xi + 1, xj, xi, xj);
-    }
-    else if(xj == 7 && (xi > 0 && xi < 7)){
+    } else if (xj === 7 && (xi > 0 && xi < 7)){
       this.openZeros(xi - 1, xj - 1, xi + 1, xj, xi, xj);
-    }
-    else if(xi == 7 && xj == 7){
+    } else if (xi === 7 && xj === 7){
       this.openZeros(xi - 1, xj - 1, xi, xj, xi, xj);
-    }
-    else if(xi == 7 && (xj > 0 && xj < 7)){
+    } else if (xi === 7 && (xj > 0 && xj < 7)){
       this.openZeros(xi - 1, xj - 1, xi, xj + 1, xi, xj);
-    }
-    else if(xi == 7 && xj == 0){
+    } else if (xi === 7 && xj === 0){
       this.openZeros(xi - 1, xj, xi, xj + 1, xi, xj);
-    }
-    else if(xj == 0 && (xi > 0 && xi < 7)){
+    } else if (xj === 0 && (xi > 0 && xi < 7)){
       this.openZeros(xi - 1, xj, xi + 1, xj + 1, xi, xj);
-    }else{
+    } else {
       this.openZeros(xi - 1, xj - 1, xi + 1, xj + 1, xi, xj);
     }
   }
 
-  openZeros(vari,varj,fini,finj,cori,corj){
-    const { openBox, matrixMinesWeeper } = this.state;
+  openZeros(vari, varj, endi, endj, cori, corj){
+    const { matrixMinesWeeper } = this.state;
     let array = [];
-    array = array.concat(`${cori}${corj}`);
-    for(var i = vari; i <= fini; i++){
-          for(var j = varj; j <= finj; j++){
-            if(matrixMinesWeeper[i][j] == 0){
-              if(i == cori && j == corj){       //It`s corner
-                array = array.concat(`${i}${j}`);
-              }else{
-                if(matrixMinesWeeper[i][j] == 0){      //It`s zero
-                  array = array.concat(`${i}${j}`);
-                }
-              }
-            }else{
-              if(matrixMinesWeeper[i][j] == "*"){       //It´s mine
-              }
-            }
+    array = array.concat(`${ cori }${ corj }`);
+    for (let i = vari; i <= endi; i++){
+      for (let j = varj; j <= endj; j++){
+        if (matrixMinesWeeper[i][j] === 0){
+          if (i === cori && j === corj){
+            array = array.concat(`${ i }${ j }`);
+          } else if (matrixMinesWeeper[i][j] === 0) {
+            array = array.concat(`${ i }${ j }`);
           }
+        }
       }
+    }
 
-      return this.setState({ openBox: this.state.openBox.concat(array) });
+    return this.setState({ openBox: this.state.openBox.concat(array) });
   }
 
   setGameOver(){
@@ -118,7 +105,7 @@ export default class Minesweeper extends Component {
 
       const renderBox = gameOver ? box : hideBox;
 
-      return <div className={ classNameBox } onClick={ action }>{ renderBox }</div>;
+      return <div key={ v4() } className={ classNameBox } onClick={ action }>{ renderBox }</div>;
     });
 
     const messageGameOver = gameOver ? <div>Has perdido el juego</div> : undefined;

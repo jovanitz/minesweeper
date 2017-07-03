@@ -16,6 +16,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.12.2",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-no-class": "^0.1.0",
     "eslint-plugin-react": "^6.8.0",
     "node-sass-loader": "^0.1.7",
