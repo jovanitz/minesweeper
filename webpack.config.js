@@ -11,9 +11,11 @@ module.exports = {
   resolve: {
     alias: {
       views: path.resolve('app/views'),
-      state: path.resolve('./app/state'),
+      state: path.resolve('app/state'),
       components: path.resolve('app/components'),
-      sass: path.resolve('./sass'),
+      hoc: path.resolve('app/hoc'),
+      img: path.resolve('app/img'),
+      sass: path.resolve('sass'),
     },
   },
   module: {

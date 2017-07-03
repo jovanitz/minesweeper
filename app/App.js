@@ -5,21 +5,21 @@ import createHistory from 'history/createHashHistory';
 import { ConnectedRouter } from 'react-router-redux';
 import store from 'state/store';
 import 'sass/minesweeper.scss';
+import Welcome from 'views/welcome/WelcomeContainer';
 
 const history = createHistory();
 
 export default class App extends Component {
   render() {
-
-    const Home = () => <div>'Home'</div>;
-    const Address = () => <div>'Address'</div>;
+    const welcome = () => <Welcome changingBackground= { true } />;
+    const minesweeper = () => <div></div>;
 
     return (
       <Provider store={ store }>
         <ConnectedRouter history={ history }>
           <Switch>
-            <Route exact path='/' component={ Home }/>
-            <Route path='/minesweeper' component={ Address } />
+            <Route exact path='/' component={ welcome }/>
+            <Route path='/minesweeper' component={ minesweeper } />
           </Switch>
         </ConnectedRouter>
       </Provider>
