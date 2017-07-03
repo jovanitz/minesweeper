@@ -60,7 +60,6 @@
       "afterColon": true
     }],
     "keyword-spacing": [2, { "before": true, "after": true }],
-    "linebreak-style": [2, "unix"],
     "max-depth": [0, 4],
     "max-len": [1, 120, 4],
     "max-nested-callbacks": [0, 2],

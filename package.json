@@ -28,9 +28,14 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "history": "^4.6.3",
     "lodash": "^4.17.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-icons": "^2.2.5"
+    "react-icons": "^2.2.5",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.7.1"
   }
 }

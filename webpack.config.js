@@ -11,8 +11,8 @@ module.exports = {
   resolve: {
     alias: {
       views: path.resolve('app/views'),
-      helpers: path.resolve('./app/helpers'),
-      components: path.resolve('./app/components'),
+      state: path.resolve('./app/state'),
+      components: path.resolve('app/components'),
       sass: path.resolve('./sass'),
     },
   },
