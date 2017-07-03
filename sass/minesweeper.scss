@@ -30,7 +30,12 @@ body {
   transition: background-color 2s;
 }
 
-.buscaminas {
+.minesweeper-game-box {
+  display: flex;
+  margin-left: 80px;
+}
+
+.minesweeper-game {
   display: flex;
   flex-flow: row wrap;
   height: 320px;
@@ -50,7 +55,16 @@ body {
 
     &--open {
       background-color: white;
+      transition: background-color 1s;
     }
+  }
+}
+
+.minesweeper-info {
+  margin-left: 70px;
+
+  &__lose {
+    margin-top: 70px;
   }
 }
 
@@ -83,4 +97,10 @@ body {
   font-size: 22px;
   margin-top: 20px;
   cursor: pointer;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
 }

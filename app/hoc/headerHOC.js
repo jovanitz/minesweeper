@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 function headerHOC(WrappedComponent) {
   class HeaderHOC extends Component {
@@ -40,11 +42,12 @@ function headerHOC(WrappedComponent) {
 
     render() {
       const { backgroundColorClass = '' } = this.state;
+      const { dispatch } = this.props;
 
       return (
         <div className={ backgroundColorClass }>
           <header className='header-app'>
-            <h1 className='header-app__h1'>MINESWEEPER</h1>
+            <h1 className='header-app__h1' onClick={ () => dispatch(push('/')) }>MINESWEEPER</h1>
             <img className='header-app__img' src={ 'app/img/minesweeper.png' }/>
           </header>
           <WrappedComponent { ...this.props }/>
@@ -53,7 +56,7 @@ function headerHOC(WrappedComponent) {
     }
   }
 
-  return HeaderHOC;
+  return connect()(HeaderHOC);
 }
 
 export default headerHOC;

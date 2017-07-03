@@ -86,8 +86,6 @@ export default class Minesweeper extends Component {
   render() {
     const { minesweeper, openBox, gameOver } = this.state;
 
-    console.log(openBox);
-
     const renderBoard = minesweeper.map(({ id, value, indexI, indexJ } = {}) => {
       const box = Object.is('*', value)
                 ? <MdBrightnessHigh size={30} color='#C2C2C2' />
@@ -101,22 +99,28 @@ export default class Minesweeper extends Component {
 
       const hideBox = openBox.includes(id) ? box : <span></span>;
 
-      const classNameBox = !openBox.includes(id) ? 'buscaminas__item' : 'buscaminas__item buscaminas__item--open';
+      const classNameBox = !openBox.includes(id)
+                         ? 'minesweeper-game__item'
+                         : 'minesweeper-game__item minesweeper-game__item--open';
 
       const renderBox = gameOver ? box : hideBox;
 
       return <div key={ v4() } className={ classNameBox } onClick={ action }>{ renderBox }</div>;
     });
 
-    const messageGameOver = gameOver ? <div>Has perdido el juego</div> : undefined;
+    const messageGameOver = gameOver
+                          ? <div className='minesweeper-info__lose'>Has perdido el juego :(</div>
+                          : undefined;
 
     return (
-      <div>
-        <div className='buscaminas'>
+      <div className='minesweeper-game-box'>
+        <div className='minesweeper-game'>
           { renderBoard }
         </div>
-        <div onClick={ this.generateNewGame }>generarNuevo</div>
-        { messageGameOver }
+        <div className='minesweeper-info'>
+          <button className='button-app' onClick={ this.generateNewGame }>Jugar nuevamente</button>
+          { messageGameOver }
+        </div>
       </div>
     );
   }

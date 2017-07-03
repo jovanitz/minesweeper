@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import headerHOC from 'hoc/headerHOC';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 
 class Welcome extends Component {
   render() {
